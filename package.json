@@ -1,0 +1,88 @@
+{
+  "name": "@davronsherbaev/claude-tools",
+  "version": "1.0.67-dist",
+  "description": "Multi-purpose CLI for Claude Code workflows - spawn sessions, Telegram, Jira, Asana",
+  "type": "module",
+  "main": "dist/index.js",
+  "bin": {
+    "claude-tools": "./dist/cli.js"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "SECURITY.md",
+    "THIRD-PARTY-NOTICES.md",
+    "scripts/postinstall.js"
+  ],
+  "scripts": {
+    "build": "tsc && node scripts/clean-stale-dist.js",
+    "build:extension": "tsc -p extension/tsconfig.json",
+    "build:all": "npm run build && npm run build:extension",
+    "start": "node dist/cli.js",
+    "dev": "npx tsx src/cli.ts",
+    "test": "npm run build && node --test dist/tests/*.test.js",
+    "telegram-auth": "npx tsx src/scripts/generate-telegram-session.ts",
+    "postinstall": "node scripts/postinstall.js",
+    "prepack": "npm run clean && npm run build",
+    "clean": "node -e \"require('fs').rmSync('dist',{recursive:true,force:true})\""
+  },
+  "keywords": [
+    "claude",
+    "tools",
+    "telegram",
+    "jira",
+    "asana",
+    "orchestrator"
+  ],
+  "license": "MIT",
+  "devDependencies": {
+    "@types/better-sqlite3": "^7.6.11",
+    "@types/chrome": "^0.1.36",
+    "@types/node": "^22.0.0",
+    "@types/react": "^19.2.7",
+    "@types/uuid": "^9.0.7",
+    "@types/ws": "^8.5.12",
+    "tsx": "^4.20.0",
+    "typescript": "^5.7.0"
+  },
+  "dependencies": {
+    "@anthropic-ai/claude-agent-sdk": "^0.2.12",
+    "@grpc/grpc-js": "^1.14.3",
+    "@grpc/proto-loader": "^0.8.0",
+    "@inkjs/ui": "^2.0.0",
+    "@modelcontextprotocol/sdk": "^1.30.1",
+    "@protobuf-ts/grpc-transport": "^2.11.1",
+    "@protobuf-ts/runtime": "^2.11.1",
+    "@xterm/addon-serialize": "^0.14.0",
+    "@xterm/headless": "^6.0.0",
+    "ansi-to-image": "^1.0.0",
+    "better-sqlite3": "^11.6.0",
+    "chalk": "^5.4.0",
+    "commander": "^13.0.0",
+    "ink": "^6.6.0",
+    "jira.js": "^5.2.2",
+    "koffi": "^2.15.0",
+    "node-pty": "^1.1.0",
+    "p-queue": "^9.0.1",
+    "react": "^19.2.3",
+    "screenshot-desktop": "^1.15.3",
+    "sqlite-vec": "^0.1.7-alpha.2",
+    "strip-ansi": "^7.1.2",
+    "telegram": "^2.26.22",
+    "terminal-screenshot": "^1.1.0",
+    "uuid": "^9.0.1",
+    "ws": "^8.19.0",
+    "zod": "^4.3.5"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ai-nd-co/claude-tools.git"
+  },
+  "homepage": "https://github.com/ai-nd-co/claude-tools#readme",
+  "bugs": {
+    "url": "https://github.com/ai-nd-co/claude-tools/issues"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

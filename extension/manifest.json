@@ -1,0 +1,14 @@
+{
+  "manifest_version": 3,
+  "name": "MCP Browser Control (PoC)",
+  "version": "0.1.0",
+  "description": "Proof-of-concept MCP bridge for Chrome tab control.",
+  "permissions": ["debugger", "tabs"],
+  "host_permissions": ["http://*/*", "https://*/*"],
+  "background": {
+    "service_worker": "dist/background.js"
+  },
+  "action": {
+    "default_title": "MCP Browser Control"
+  }
+}
